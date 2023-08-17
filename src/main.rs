@@ -1,8 +1,10 @@
-#![warn(clippy::all, clippy::pedantic)]
 mod editor;
+mod terminal;
 use editor::Editor;
+pub use terminal::Terminal; // 这里的原理是在顶层重新导出Terminal结构，下面的模块可以直接 use crate::Terminal;
+pub use editor::Position;
 
 fn main() {
-    let editor = Editor::default();
+    let mut editor = Editor::default();
     editor.run();
 }
